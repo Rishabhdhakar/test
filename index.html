@@ -27,12 +27,6 @@
       cursor: pointer;
     }
 
-    #yesButton {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-    }
-
     #noButton {
       background-color: #f44336;
       color: white;
@@ -44,13 +38,25 @@
       alert("You clicked " + answer);
       // Add your custom logic here based on the user's answer
     }
+
+    function moveButton() {
+      const noButton = document.getElementById('noButton');
+      const maxX = window.innerWidth - noButton.clientWidth;
+      const maxY = window.innerHeight - noButton.clientHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+    }
   </script>
 </head>
 <body>
   <div id="question">Are you sure?</div>
   <div id="buttons">
     <button class="button" id="yesButton" onclick="handleButtonClick('Yes')">Yes</button>
-    <button class="button" id="noButton" onclick="handleButtonClick('No')">No</button>
+    <button class="button" id="noButton" onmouseover="moveButton()" onclick="handleButtonClick('No')">No</button>
   </div>
 </body>
 </html>
